@@ -1,5 +1,5 @@
 {
-    "name": "電圧測定",
+    "name": "電圧測定 #2",
     "description": "",
     "dependencies": {
         "core": "*",

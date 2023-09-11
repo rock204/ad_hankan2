@@ -2,6 +2,7 @@ input.onButtonPressed(Button.A, function () {
     music.play(music.tonePlayable(262, music.beat(BeatFraction.Whole)), music.PlaybackMode.UntilDone)
     mode = 1
     max = 0
+    kg_array = []
 })
 function stop_display () {
     max = Math.round(max)
@@ -21,10 +22,11 @@ function sokutei () {
     0,
     100
     )
-    max = Math.max(kg, max)
+    kg_array.push(kg)
     serial.writeLine("" + (kg))
 }
 let kg = 0
+let kg_array: number[] = []
 let max = 0
 let mode = 0
 serial.writeLine("スタート")
