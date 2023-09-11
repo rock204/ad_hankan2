@@ -4,7 +4,8 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "microphone": "*"
+        "microphone": "*",
+        "custom_block": "github:rock204/custom_block#ab1df8283c15b68e2946c3fe733a7881b5ace64b"
     },
     "files": [
         "main.blocks",
