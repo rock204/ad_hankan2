@@ -5,9 +5,14 @@ input.onButtonPressed(Button.A, function () {
     kg_array = []
 })
 function stop_display () {
-    max = Math.round(max)
-    serial.writeValue("握力(kg)", max)
+    max = Math.round(custom.calculateMax(kg_array))
+    average = Math.round(custom.calculateMean(kg_array))
+    serial.writeValue("最大値(kg)", max)
+    serial.writeValue("平均値(kg)", average)
+    basic.showString("max")
     basic.showNumber(max)
+    basic.showString("m")
+    basic.showNumber(average)
     mode = 999
 }
 input.onButtonPressed(Button.B, function () {
@@ -26,6 +31,7 @@ function sokutei () {
     serial.writeLine("" + (kg))
 }
 let kg = 0
+let average = 0
 let kg_array: number[] = []
 let max = 0
 let mode = 0
