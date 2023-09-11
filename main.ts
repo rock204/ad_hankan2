@@ -7,7 +7,7 @@ function stop_display () {
     max = Math.round(max)
     serial.writeValue("握力(kg)", max)
     basic.showNumber(max)
-    kg = 999
+    mode = 999
 }
 input.onButtonPressed(Button.B, function () {
     music.play(music.tonePlayable(262, music.beat(BeatFraction.Double)), music.PlaybackMode.UntilDone)
