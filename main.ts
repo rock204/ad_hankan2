@@ -4,15 +4,27 @@ input.onButtonPressed(Button.A, function () {
     max = 0
 })
 function stop_display () {
-	
+    max = Math.round(max)
+    serial.writeValue("握力(kg)", max)
+    basic.showNumber(max)
+    kg = 999
 }
 input.onButtonPressed(Button.B, function () {
     music.play(music.tonePlayable(262, music.beat(BeatFraction.Double)), music.PlaybackMode.UntilDone)
     mode = 0
 })
 function sokutei () {
-	
+    kg = pins.map(
+    pins.analogReadPin(AnalogPin.P0),
+    0,
+    1023,
+    0,
+    100
+    )
+    max = Math.max(kg, max)
+    serial.writeLine("" + (kg))
 }
+let kg = 0
 let max = 0
 let mode = 0
 serial.writeLine("スタート")
