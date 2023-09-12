@@ -8,12 +8,12 @@ function stop_display () {
     average = Math.round(custom.calculateMean(kg_array))
     serial.writeValue("最大値(kg)", max)
     serial.writeValue("平均値(kg)", average)
-    basic.showString("max")
-    basic.showNumber(max)
-    basic.showString("m")
-    basic.showNumber(average)
-    mode = 999
+    kg_array = []
+    mode = 1
 }
+input.onButtonPressed(Button.B, function () {
+    mode = 999
+})
 function sokutei () {
     kg = pins.map(
     pins.analogReadPin(AnalogPin.P0),
