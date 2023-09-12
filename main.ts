@@ -15,10 +15,6 @@ function stop_display () {
     basic.showNumber(average)
     mode = 999
 }
-input.onButtonPressed(Button.B, function () {
-    music.play(music.tonePlayable(262, music.beat(BeatFraction.Double)), music.PlaybackMode.UntilDone)
-    mode = 0
-})
 function sokutei () {
     kg = pins.map(
     pins.analogReadPin(AnalogPin.P0),
@@ -27,8 +23,6 @@ function sokutei () {
     0,
     100
     )
-    kg_array.push(kg)
-    serial.writeLine("" + (kg))
 }
 let kg = 0
 let average = 0
@@ -37,11 +31,22 @@ let max = 0
 let mode = 0
 serial.writeLine("スタート")
 mode = 999
+let ikichi = 2
 basic.forever(function () {
+    sokutei()
     if (mode == 1) {
-        sokutei()
+        if (kg > ikichi) {
+            mode = 2
+        }
     }
-    if (mode == 0) {
-        stop_display()
+    if (mode == 2) {
+        if (kg < ikichi) {
+            music.play(music.tonePlayable(262, music.beat(BeatFraction.Double)), music.PlaybackMode.UntilDone)
+            mode = 0
+            stop_display()
+        } else {
+            kg_array.push(kg)
+            serial.writeLine("" + (kg))
+        }
     }
 })
